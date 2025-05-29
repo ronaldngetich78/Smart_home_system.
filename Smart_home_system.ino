@@ -4,7 +4,7 @@
 SoftwareSerial GSM(8, 9);   //SIM800L Tx & Rx is connected to Arduino #8 & #9
 
 String phone_no1 = "+254725267878"; 
-String phone_no2 = "+54726457980"; 
+String phone_no2 = "+254726457980"; 
 
 String        RxString  = ""; // Will hold the incoming String  from the GSM shield
 char          RxChar    = ' ';
