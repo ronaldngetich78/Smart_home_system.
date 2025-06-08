@@ -119,7 +119,8 @@ void loop(){
   //Serial.println(averageValue);
 
   currentTime1= millis();
-  if (currentTime1 - previousTime1 >= 300000){
+  currentTime2= millis();
+  if (currentTime1 - previousTime1 >= 600000){
     initModule("AT+CPIN?","READY",1000);
   /*             
   if (!sendSMS("+254725267878", "Hello from Arduino!")) {
@@ -135,36 +136,36 @@ void loop(){
   }
   
   currentTime3= millis();
-  if (currentTime3 - previousTime3 >= ledDelay && ldrStatus <= 300  ){
+  if (currentTime3 - previousTime3 >= ledDelay && ldrStatus <= 150  ){
     ledState= !ledState;
     digitalWrite(redLed, ledState);
     previousTime3= currentTime3;
   }
 
-  if(D1==0&&D2==0&&D3==0&&x==true){ sendingSMS = sendSMS(phone_no1,"All lights On"); sentSMSStatus();  
-    sendingSMS = sendSMS(phone_no2,"All lights On");  sentSMSStatus();a=b=c=d=e=f=x=y= false; }
-  if(D1==1&&D2==1&&D3==1&&y==false){sendingSMS =  sendSMS(phone_no1,"All lights Off");  sentSMSStatus();
-    sendingSMS = sendSMS(phone_no2,"All lights off");a=b=c=d=e=f=x=y= true;}
+  if(D1==0&&D2==0&&D3==0&&x==true){ sendingSMS = sendSMS(phone_no1,"All lights On"); sentSMSStatus(phone_no1,"All lights On");  
+    sendingSMS = sendSMS(phone_no2,"All lights On");  sentSMSStatus(phone_no2,"All lights On");a=b=c=d=e=f=x=y= false; }
+  if(D1==1&&D2==1&&D3==1&&y==false){sendingSMS =  sendSMS(phone_no1,"All lights Off");  sentSMSStatus(phone_no1,"All lights Off");
+    sendingSMS = sendSMS(phone_no2,"All lights off");  sentSMSStatus(phone_no2,"All lights off");a=b=c=d=e=f=x=y= true;}
 
-  if(D1 == 0 && a==true){ sendingSMS = sendSMS(phone_no1,"Sitting room light On");  sentSMSStatus();
-    sendingSMS = sendSMS(phone_no2,"Sitting room light On");  sentSMSStatus(); a=b= false; x=true;}
-  if(D1 == 1 && b==false){ sendingSMS = sendSMS(phone_no1,"Sitting room light Off");  sentSMSStatus();
-    sendingSMS = sendSMS(phone_no2,"Sitting room ligt Off"); sentSMSStatus(); a=b= true; y=false;}
+  if(D1 == 0 && a==true){ sendingSMS = sendSMS(phone_no1,"Sitting room light On");  sentSMSStatus(phone_no1,"Sitting room light On");
+    sendingSMS = sendSMS(phone_no2,"Sitting room light On");  sentSMSStatus(phone_no2,"Sitting room light On"); a=b= false; x=true;}
+  if(D1 == 1 && b==false){ sendingSMS = sendSMS(phone_no1,"Sitting room light Off");  sentSMSStatus(phone_no1,"Sitting room light Off");
+    sendingSMS = sendSMS(phone_no2,"Sitting room ligt Off"); sentSMSStatus(phone_no2,"Sitting room ligt Off"); a=b= true; y=false;}
   
-  if(D2 == 0 && c==true){ sendingSMS = sendSMS(phone_no1," Bedroom light On");  sentSMSStatus();  
-    sendingSMS = sendSMS(phone_no2,"Bedroom light On"); sentSMSStatus(); c=d= false;x=true; }
-  if(D2 == 1 && d==false){ sendingSMS = sendSMS(phone_no1,"Bedroom light Off"); sentSMSStatus(); 
-    sendingSMS = sendSMS(phone_no2,"Bedroom light Off"); sentSMSStatus(); c=d= true; y=false;}
+  if(D2 == 0 && c==true){ sendingSMS = sendSMS(phone_no1," Bedroom light On");  sentSMSStatus(phone_no1," Bedroom light On");  
+    sendingSMS = sendSMS(phone_no2,"Bedroom light On"); sentSMSStatus(phone_no2,"Bedroom light On"); c=d= false;x=true; }
+  if(D2 == 1 && d==false){ sendingSMS = sendSMS(phone_no1,"Bedroom light Off"); sentSMSStatus(phone_no1,"Bedroom light Off"); 
+    sendingSMS = sendSMS(phone_no2,"Bedroom light Off"); sentSMSStatus(phone_no2,"Bedroom light Off"); c=d= true; y=false;}
              
-  if(D3 == 0 && e==true){ sendingSMS = sendSMS(phone_no1,"Security lights On"); sentSMSStatus(); 
-    sendingSMS = sendSMS(phone_no2,"Security lights On"); sentSMSStatus(); e=f= false;x=true; }
-  if(D3 == 1 && f==false){ sendingSMS = sendSMS(phone_no1,"Security lights Off"); sentSMSStatus(); 
-    sendingSMS = sendSMS(phone_no2,"Security lights Off"); sentSMSStatus(); e=f= true; y=false;}
+  if(D3 == 0 && e==true){ sendingSMS = sendSMS(phone_no1,"Security lights On"); sentSMSStatus(phone_no1,"Security lights On"); 
+    sendingSMS = sendSMS(phone_no2,"Security lights On"); sentSMSStatus(phone_no2,"Security lights On"); e=f= false;x=true; }
+  if(D3 == 1 && f==false){ sendingSMS = sendSMS(phone_no1,"Security lights Off"); sentSMSStatus(phone_no1,"Security lights Off"); 
+    sendingSMS = sendSMS(phone_no2,"Security lights Off"); sentSMSStatus(phone_no2,"Security lights Off"); e=f= true; y=false;}
                          
-  if(D4 == 0 && g==true){ sendingSMS = sendSMS(phone_no1,"Solar power On"); sentSMSStatus(); 
-    sendingSMS = sendSMS(phone_no2,"Solar power on"); sentSMSStatus(); g=h= false;}
-  if(D4 == 1 && h==false){ sendingSMS = sendSMS(phone_no1,"Solar power Off"); sentSMSStatus(); 
-    sendingSMS = sendSMS(phone_no2,"Solar power Off"); sentSMSStatus(); g=h= true;}
+  if(D4 == 0 && g==true){ sendingSMS = sendSMS(phone_no1,"Solar power On"); sentSMSStatus(phone_no1,"Solar power On"); 
+    sendingSMS = sendSMS(phone_no2,"Solar power on"); sentSMSStatus(phone_no2,"Solar power on"); g=h= false;}
+  if(D4 == 1 && h==false){ sendingSMS = sendSMS(phone_no1,"Solar power Off"); sentSMSStatus(phone_no1,"Solar power Off"); 
+    sendingSMS = sendSMS(phone_no2,"Solar power Off"); sentSMSStatus(phone_no2,"Solar power Off"); g=h= true;}
   
   // scan for data from software serial port
   //-----------------------------------------------
@@ -199,14 +200,14 @@ void loop(){
     if(GSM_Msg=="Security on" && D3 == 1 && load3==1 && j== true) {load3=0;}
     if(GSM_Msg=="Security off" && D3 == 0 && load3==1 && j== true){load3=0;} 
 
-    if(GSM_Msg=="Ldr on") {load5=1; sendingSMS = sendSMS(GSM_Nr,"Ok Ldr is activated"); sentSMSStatus();}
-    if(GSM_Msg=="Ldr off") {load5=0; sendingSMS = sendSMS(GSM_Nr,"Ok Ldr is deactivated"); sentSMSStatus();}
-    if(GSM_Msg=="Timer on") {load6=1; sendingSMS = sendSMS(GSM_Nr,"Ok timer is activated"); sentSMSStatus(); previousTime2 = currentTime2;}
-    if(GSM_Msg=="Timer off") {load6=0; sendingSMS = sendSMS(GSM_Nr,"Ok timer is deactivated"); sentSMSStatus();}
-    if(GSM_Msg=="Pir on") {load7=1; sendingSMS = sendSMS(GSM_Nr,"Ok Pir is activated"); sentSMSStatus();}
-    if(GSM_Msg=="Pir off") {load7=0; sendingSMS = sendSMS(GSM_Nr,"Ok Pir is deactivated"); sentSMSStatus(); }
-    if(GSM_Msg=="Door on") {load8=1; sendingSMS = sendSMS(GSM_Nr,"Ok Door is activated"); sentSMSStatus();}
-    if(GSM_Msg=="Door off") {load8=0; sendingSMS = sendSMS(GSM_Nr,"Ok Door is deactivated"); sentSMSStatus();}
+    if(GSM_Msg=="Ldr on") {load5=1; sendingSMS = sendSMS(GSM_Nr,"Ok Ldr is activated"); sentSMSStatus(GSM_Nr,"Ok Ldr is activated");}
+    if(GSM_Msg=="Ldr off") {load5=0; sendingSMS = sendSMS(GSM_Nr,"Ok Ldr is deactivated"); sentSMSStatus(GSM_Nr,"Ok Ldr is deactivated");}
+    if(GSM_Msg=="Timer on") {load6=1; sendingSMS = sendSMS(GSM_Nr,"Ok timer is activated"); sentSMSStatus(GSM_Nr,"Ok timer is activated"); previousTime2 = currentTime2;}
+    if(GSM_Msg=="Timer off") {load6=0; sendingSMS = sendSMS(GSM_Nr,"Ok timer is deactivated"); sentSMSStatus(GSM_Nr,"Ok timer is deactivated");}
+    if(GSM_Msg=="Pir on") {load7=1; sendingSMS = sendSMS(GSM_Nr,"Ok Pir is activated"); sentSMSStatus(GSM_Nr,"Ok Pir is activated");}
+    if(GSM_Msg=="Pir off") {load7=0; sendingSMS = sendSMS(GSM_Nr,"Ok Pir is deactivated"); sentSMSStatus(GSM_Nr,"Ok Pir is deactivated"); }
+    if(GSM_Msg=="Door on") {load8=1; sendingSMS = sendSMS(GSM_Nr,"Ok Door is activated"); sentSMSStatus(GSM_Nr,"Ok Door is activated");}
+    if(GSM_Msg=="Door off") {load8=0; sendingSMS = sendSMS(GSM_Nr,"Ok Door is deactivated"); sentSMSStatus(GSM_Nr,"Ok Door is deactivated");}
 
     if(GSM_Msg=="Call") {
       GSM.println("ATD+ +254725267878;");
@@ -235,8 +236,8 @@ void loop(){
       String loadst1 = "";
       String loadst2 = "";
      
-      if(D1==0&&D2==0&&D3==0){loadst1="All lights on.";  sendingSMS = sendSMS(GSM_Nr,loadst1); sentSMSStatus(); z=false;}
-      if(D1==1&&D2==1&&D3==1){loadst1="All lights off."; sendingSMS = sendSMS(GSM_Nr,loadst1); sentSMSStatus(); z=false;}
+      if(D1==0&&D2==0&&D3==0){loadst1="All lights on.";  sendingSMS = sendSMS(GSM_Nr,loadst1); sentSMSStatus(GSM_Nr,loadst1); z=false;}
+      if(D1==1&&D2==1&&D3==1){loadst1="All lights off."; sendingSMS = sendSMS(GSM_Nr,loadst1); sentSMSStatus(GSM_Nr,loadst1); z=false;}
 
       if(z==true){
         
@@ -249,7 +250,7 @@ void loop(){
         if(D3==0){loadst2=loadst2 + "SC 1";}
                 else{loadst2=loadst2 + "SC 0";}
 
-        sendingSMS = sendSMS(GSM_Nr,loadst2); sentSMSStatus();        
+        sendingSMS = sendSMS(GSM_Nr,loadst2); sentSMSStatus(GSM_Nr,loadst2);        
 
       }
       z=true;
@@ -261,9 +262,9 @@ void loop(){
       if(D4==0){solarst="Solar power On.";}
       if(D4==1){solarst="Solar power Off.";}
 
-      sendingSMS = sendSMS(GSM_Nr,solarst); sentSMSStatus();
+      sendingSMS = sendSMS(GSM_Nr,solarst); sentSMSStatus(GSM_Nr,solarst);
     }
-    /* 
+   /* 
     if(GSM_Msg == "Door status"){
       String doorst = "";
       call          = digitalRead(door);
@@ -271,11 +272,13 @@ void loop(){
       if(call == 0) {doorst = "Door locked." ;}
       if(call == 1) {doorst = "Door open." ;}
 
-      sentSMSStatus(); sendSMS(GSM_Nr,doorst);
+      sendingSMS = sendSMS(GSM_Nr,doorst); sentSMSStatus(GSM_Nr,doorst);
       
     }
     */
     if(GSM_Msg=="Restart"){delay(20000);}
+
+    //if(GSM_Msg=="") {delay(20000);}
 
     eeprom_write();
     relays();
@@ -322,7 +325,8 @@ void loop(){
     if(averageValue <= 100) {
       m = true; 
       k=true; 
-      lightDetected=true;         
+      lightDetected=true; 
+      previousTime2= currentTime2;  
       Serial.println("LDR is DARK, Relay3 is ON");
     }
   }
@@ -333,7 +337,8 @@ void loop(){
       l= true;
       t= true;
       k=false;
-      lightDetected=false;   
+      lightDetected=false; 
+      digitalWrite(redLed, 0);
       Serial.println("LDR is LIGHT, Relay3 is OFF");
     }
   }
@@ -385,24 +390,27 @@ void loop(){
     relays();
     w=false;
   }
-  
+  /*
   if(load6 == 0) {u=true;}
   
   if(load6 == 1 && D3==0 && u==true) {
-     previousTime2= currentTime2;
+   
      u=false;   
        }
-  
+  */
   if(load6 == 1 && D3==1){
-    previousTime2= currentTime2;
-    u=true;
+    u=true; w=false;
      }
-
+  
+ 
   if(currentTime2 - previousTime2 >= 7200000 && load6 == 1 && D3==0){ 
     load3 = !load3;
     eeprom_write();
     relays();
-    u=true;       
+    u=true;
+    wdt_reset();
+    delay(5000);
+    wdt_reset();     
   }
 
   if(load7== 1 && sensorValue ==HIGH && ldrStatus <=300 && D3==1 && load3 == 0&& n==true ){  load3 = 1;
@@ -565,8 +573,9 @@ void initBools(){
   D4 = digitalRead(solarPower);
 
  sendingSMS = sendSMS(phone_no1,"Restarting");
- sentSMSStatus();
-  //sendSMS(phone_no2,"Restarting");
+ sentSMSStatus(phone_no1,"Restarting");
+ sendingSMS = sendSMS(phone_no2,"Restarting");
+ sentSMSStatus(phone_no2,"Restarting");
 
   if(D1 == 0){ a=b= false; x=true;}
   else{ a=b= true; y=false; }
@@ -603,10 +612,9 @@ int ldrAverageValue(){
 }
 
 
-void sentSMSStatus(){
+void sentSMSStatus(String number, String msg){
   if (sendingSMS == false) {
   Serial.println("SMS failed. Restarting GSM...");
-  /*
   digitalWrite(reset, 0);
   A = 0;
   for (A = 0; A < 10; A++){ wdt_reset(); delay(5000);} 
@@ -620,7 +628,22 @@ void sentSMSStatus(){
   initModule("AT+CMGF=1","OK",1000);         //Set SMS mode to ASCII
   initModule("AT+CNMI=2,2,0,0,0","OK",1000); //Set device to read SMS if available and print to serial
   Serial.println("Initialized Successfully"); 
-*/
+
+  digitalWrite(redLed, 1);
+  GSM.println("AT+CMGF=1");
+  delay(1000);
+  digitalWrite(redLed, 0);
+  GSM.print("AT+CMGS=\"");GSM.print(number);GSM.println("\"\r\n"); //AT+CMGS=”Mobile Number” <ENTER> - Assigning recipient’s mobile number
+  delay(500);
+  GSM.println(msg); // Message contents
+  delay(500);
+  digitalWrite(redLed, 1);
+  wdt_reset(); 
+  GSM.write(byte(26)); //Ctrl+Z  send message command (26 in decimal).
+  delay(5000);
+  wdt_reset();
+  digitalWrite(redLed, 0);
+
     //resetGSM();
   } else {
     Serial.println("SMS sent successfully.");
